@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>This is my website!</title>
+</head>
+<body>
+    <h1>This is my Primary Website!</h1>
+    <p>This website is the primary source of all of the fun facts you need in life.</p>
+    <p>No other website on the entire internet does what we do here!</p>
+    <p>We are so cool, we have jQuery!</p>
+    <ul id="list">We are just having a bit of trouble retrieving our data... try getting the submodule!</ul>
+    <script>
+        $ ( window ).on("load", function(){
+            $.getJSON("data/data.json",function(data) {
+                var items = [];
+                $.each(data, function(key, val) {
+                    items.push("<li id='" + key + "'>" + val.text + "</li>");
+                })
+                $("#list").html(items.join(""));
+
+            })
+        });
+    </script>
+</body>
+</html>
